@@ -5,7 +5,7 @@ import { IoIosExit } from "react-icons/io";
 
 function Tickets({send,state}) {
     const finish = () => {
-        send({type: "DONE"})
+        send({type: "FINISH"})
       };
 
     return (

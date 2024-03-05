@@ -11,11 +11,13 @@ function Search({ send }) {
     };
 
     const goToPassengers = () => {
-        send({ type: 'CONTINUE' })
+        send({ 
+            type: 'CONTINUE',
+            selectCountry: flight
+        });
     }
 
     const options = ['Mexico', 'Venezuela', 'Colombia'];
-    console.log('flifht' + flight);
     return (
         <div className='max-w-screen-lg mx-auto p-4 bg-slate-50 rounded-lg text-center'>
             <div className=" flex items-center justify-center">

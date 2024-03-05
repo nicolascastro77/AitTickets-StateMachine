@@ -14,15 +14,16 @@ function Passengers({ state, send }) {
 
     const submit = (e) => {
         e.preventDefault();
+        send({ type: 'ADD', newPassenger: value });
         changeValue('');
-    }
+      }
 
 
     return (
         <div className='max-w-screen-lg mx-auto p-4 bg-slate-100 rounded-lg '>
             <h2 className="text-2xl font-bold mb-4">Añadir Pasajeros</h2>
 
-            <form className="flex items-center mb-4">
+            <form onSubmit={submit} className="flex items-center mb-4">
                 <input
                     type="text"
                     placeholder="Nombre del pasajero"
