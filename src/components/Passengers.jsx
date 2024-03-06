@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { GiConfirmed } from "react-icons/gi";
+import { IoPerson } from "react-icons/io5";
+
 function Passengers({ state, send }) {
 
     const [value, changeValue] = useState('');
@@ -16,7 +18,9 @@ function Passengers({ state, send }) {
         e.preventDefault();
         send({ type: 'ADD', newPassenger: value });
         changeValue('');
-      }
+    }
+
+    const { passengers } = state.context;
 
 
     return (
@@ -30,21 +34,27 @@ function Passengers({ state, send }) {
                     value={value}
                     onChange={onChangeInput}
                     className="border border-gray-300 px-3 py-2 mr-2 w-full"
+                    autoFocus
+                    pattern='^[a-zA-Z]+(?:\s[a-zA-Z]+)*$'
                 />
                 <button
                     type="submit"
                     className="bg-blue-500 text-white px-4 py-2 rounded"
+                    disabled={!value.trim()}
                 >
                     Agregar
                 </button>
             </form>
 
             {/* Lista de Pasajeros */}
-            {/* <ul className="list-disc ml-6 mb-4">
+            <ul className="list-disc ml-6 mb-4">
                 {passengers.map((passenger, index) => (
-                    <li key={index}>{passenger}</li>
+                    <li key={index} className="flex items-center">
+                        <IoPerson className="mr-2" />
+                        <span>{passenger}</span>
+                    </li>
                 ))}
-            </ul> */}
+            </ul>
 
             {/* Botones de Pago */}
             <div className="flex justify-end">

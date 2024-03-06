@@ -10,7 +10,7 @@ export default function BaseLayout() {
     console.log(state.value);
     console.log(state.context);
     return (
-        <div className='bg-pink-200 bg-cover min-h-screen flex flex-col items-center justify-center p-12 box-border'>
+        <div className='bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 bg-cover min-h-screen flex flex-col items-center justify-center p-12 box-border'>
             <Nav state={state} send={send}/>
             <StepsLayout  state={state} send={send} />
         </div>

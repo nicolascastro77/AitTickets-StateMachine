@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { IoPerson } from "react-icons/io5";
 
-function Search({ send }) {
+
+function Search({ send, state }) {
 
 
 
@@ -11,19 +13,21 @@ function Search({ send }) {
     };
 
     const goToPassengers = () => {
-        send({ 
+        send({
             type: 'CONTINUE',
             selectCountry: flight
         });
     }
 
-    const options = ['Mexico', 'Venezuela', 'Colombia'];
+    const options = state.context.countries;
     return (
         <div className='max-w-screen-lg mx-auto p-4 bg-slate-50 rounded-lg text-center'>
             <div className=" flex items-center justify-center">
                 <div className="text-center">
-                    <h1 className="text-4xl font-bold mb-4">Encuentra tu evento</h1>
-                    <p className="text-gray-600 mb-8">Selecciona tus preferencias y continúa para encontrar eventos emocionantes.</p>
+                    <h1 className="text-4xl font-bold mb-4">Encuentra tu vuelo</h1>
+                    <div>
+                    </div>
+                    <p className="text-gray-600 mb-8">Selecciona tus preferencias y continúa para encontrar vuelos emocionantes.</p>
 
                     <div className="mb-4">
                         <label htmlFor="category" className="block text-sm font-medium text-gray-600 mb-2">Categoría:</label>
@@ -35,7 +39,10 @@ function Search({ send }) {
                             onChange={handleSelectChange}
                         >
                             <option value="" disabled defaultValue>Escoge un país</option>
-                            {options.map((option) => <option value={option} key={option}>{option}</option>)}
+                            {options.map((option) => <option
+                                value={option.name.common}
+                                key={option.name.common}>
+                                {option.name.common}</option>)}
                         </select>
                     </div>
 

@@ -3,10 +3,11 @@ import { MdAirplaneTicket } from "react-icons/md";
 import { IoIosExit } from "react-icons/io";
 
 
-function Tickets({send,state}) {
+function Tickets({ send, state }) {
+    const {passengers} = state.context
     const finish = () => {
-        send({type: "FINISH"})
-      };
+        send({ type: "FINISH" })
+    };
 
     return (
         <div className="max-w-md mx-auto p-4 bg-green-100 rounded-lg text-center">
@@ -14,6 +15,14 @@ function Tickets({send,state}) {
                 <MdAirplaneTicket className="text-green-500 inline-block mr-2" />
                 ¡Gracias por estar con nosotros!
             </div>
+            <ul className="text-left">
+                {passengers.map((passenger, index) => (
+                    <li key={index} className="mb-2">
+                        <span className="text-green-500 mr-2">✓</span>
+                        {passenger}
+                    </li>
+                ))}
+            </ul>
             <p className="text-gray-700">
                 Tu reserva ha sido confirmada. Estamos ansiosos de tenerte a bordo.
             </p>
